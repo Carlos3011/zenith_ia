@@ -1,0 +1,93 @@
+{%extends 'core/base.html'%}
+
+{% block title %}Servicio - Zenith.IA {% endblock %}
+
+{% block content %}
+<section class="servicios-section py-5" data-aos="fade-up">
+    <div class="container">
+        <!-- Sección de introducción -->
+        <div class="row mb-5 text-center">
+            <div class="col-lg-8 mx-auto" data-aos="fade-down" data-aos-delay="100">
+                <h2 class="fw-bold mb-4">Tu Compañero Digital para el Bienestar Emocional Universitario</h2>
+                <p class="lead">
+                    Somos una plataforma dedicada a apoyar la salud mental de los estudiantes universitarios, 
+                    ofreciendo herramientas preventivas y de detección temprana para la depresión, 
+                    porque tu bienestar emocional es tan importante como tu éxito académico.
+                </p>
+            </div>
+        </div>
+
+        <!-- Tarjetas de servicios -->
+        <div class="row g-4">
+            <!-- Servicio 1: Detección Temprana -->
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+                <div class="card h-100 border-0 shadow-lg hover-card">
+                    <div class="card-body p-4">
+                        <div class="feature-icon d-flex align-items-center justify-content-center bg-primary bg-gradient text-white rounded-circle mb-3" style="width: 70px; height: 70px;">
+                            <i class="bi bi-shield-check fs-4"></i>
+                        </div>
+                        <h5 class="card-title text-primary">Detección Temprana</h5>
+                        <p class="card-text">Sistema inteligente de monitoreo que ayuda a identificar señales tempranas de depresión, permitiendo una intervención oportuna y efectiva.</p>
+                        <img src="/assets/images/early-detection.svg" class="img-fluid mt-3" alt="Detección Temprana">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servicio 2: Apoyo Emocional -->
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="400">
+                <div class="card h-100 border-0 shadow-lg hover-card">
+                    <div class="card-body p-4">
+                        <div class="feature-icon d-flex align-items-center justify-content-center bg-primary bg-gradient text-white rounded-circle mb-3" style="width: 70px; height: 70px;">
+                            <i class="bi bi-heart-pulse fs-4"></i>
+                        </div>
+                        <h5 class="card-title text-primary">Apoyo Continuo</h5>
+                        <p class="card-text">Acceso 24/7 a recursos de autoayuda, ejercicios de mindfulness y conexión con profesionales de salud mental cuando lo necesites.</p>
+                        <img src="/assets/images/emotional-support.svg" class="img-fluid mt-3" alt="Apoyo Emocional">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servicio 3: Comunidad de Apoyo -->
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="600">
+                <div class="card h-100 border-0 shadow-lg hover-card">
+                    <div class="card-body p-4">
+                        <div class="feature-icon d-flex align-items-center justify-content-center bg-primary bg-gradient text-white rounded-circle mb-3" style="width: 70px; height: 70px;">
+                            <i class="bi bi-people fs-4"></i>
+                        </div>
+                        <h5 class="card-title text-primary">Comunidad Universitaria</h5>
+                        <p class="card-text">Espacio seguro para compartir experiencias, conectar con otros estudiantes y acceder a grupos de apoyo moderados por especialistas.</p>
+                        <img src="/assets/images/community-support.svg" class="img-fluid mt-3" alt="Comunidad de Apoyo">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de estadísticas -->
+        <div class="row mt-5 pt-5 text-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-md-4 mb-4">
+                <div class="stat-card p-4">
+                    <i class="bi bi-heart-fill display-4 text-primary mb-3"></i>
+                    <h2 class="counter">5000+</h2>
+                    <p>Estudiantes Apoyados</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-card p-4">
+                    <i class="bi bi-stars display-4 text-primary mb-3"></i>
+                    <h2 class="counter">90%</h2>
+                    <p>Efectividad en Prevención</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-card p-4">
+                    <i class="bi bi-hospital display-4 text-primary mb-3"></i>
+                    <h2 class="counter">50+</h2>
+                    <p>Especialistas Disponibles</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

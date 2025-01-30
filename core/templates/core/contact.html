@@ -1,0 +1,140 @@
+{%extends 'core/base.html'%}
+
+{% block title %}Contacto - Zenith.IA {% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8 max-w-3xl">
+    <div class="text-center mb-10">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3 fade-in">
+            Contacto
+        </h1>
+        <p class="text-lg text-gray-600 fade-in">
+            ¿Tienes alguna pregunta o te gustaría colaborar con nosotros? ¡Nos encantaría escucharte!
+        </p>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm p-6 md:p-7 fade-in">
+        <form id="contactForm" action="/contact/submit" method="POST" class="space-y-5">
+            <div class="group relative">
+                <input type="text" id="nombre" name="nombre" required
+                    class="peer w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors bg-white"
+                    placeholder=" ">
+                <label for="nombre"
+                    class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">
+                    Nombre completo
+                </label>
+            </div>
+
+            <div class="group relative">
+                <input type="email" id="email" name="email" required
+                    class="peer w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors bg-white"
+                    placeholder=" ">
+                <label for="email"
+                    class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">
+                    Correo electrónico
+                </label>
+            </div>
+
+            <div class="relative">
+                <select id="asunto" name="asunto"
+                    class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors bg-white appearance-none">
+                    <option value="" disabled selected>Selecciona un asunto</option>
+                    <option value="consulta">Consulta general</option>
+                    <option value="colaboracion">Propuesta de colaboración</option>
+                    <option value="soporte">Soporte técnico</option>
+                    <option value="otro">Otro</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="group relative">
+                <textarea id="mensaje" name="mensaje" rows="5" required
+                    class="peer w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors bg-white"
+                    placeholder=" "></textarea>
+                <label for="mensaje"
+                    class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">
+                    Mensaje
+                </label>
+            </div>
+
+            <button type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg flex items-center justify-center gap-2">
+                <span>Enviar mensaje</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" />
+                </svg>
+            </button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    
+    const formElements = form.querySelectorAll('.group, button');
+    formElements.forEach((el, index) => {
+        el.classList.add('form-element');
+        el.style.transitionDelay = `${index * 0.1}s`;
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    document.querySelectorAll('.form-element').forEach(el => observer.observe(el));
+
+    // Manejo del formulario
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        try {
+            const formData = new FormData(form);
+            const response = await fetch('/contact/submit', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const data = await response.json();
+            
+            if(data.success) {
+                // Mostrar mensaje de éxito con Tailwind
+                const successMessage = document.createElement('div');
+                successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-500 ease-in-out';
+                successMessage.textContent = '¡Mensaje enviado con éxito!';
+                document.body.appendChild(successMessage);
+                
+                form.reset();
+                
+                // Eliminar mensaje después de 3 segundos
+                setTimeout(() => {
+                    successMessage.remove();
+                }, 3000);
+            }
+        } catch (error) {
+            // Mostrar mensaje de error con Tailwind
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg';
+            errorMessage.textContent = 'Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.';
+            document.body.appendChild(errorMessage);
+            
+            setTimeout(() => {
+                errorMessage.remove();
+            }, 3000);
+        }
+    });
+});
+</script>
+{% endblock %}

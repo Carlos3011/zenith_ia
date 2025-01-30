@@ -1,0 +1,113 @@
+{%extends 'core/base.html'%}
+
+{% block title %}Acerca de - Zenith.IA {% endblock %}
+
+{% block content %}
+<div class="about-container">
+    <!-- Sección de encabezado con logo -->
+    <div class="about-header">
+        <div class="logo-container">
+            <img src="/assets/images/siycise-logo.png" alt="Logo SIyCISE" class="main-logo">
+        </div>
+        <h1>Acerca de nosotros</h1>
+        <p class="header-description">Plataforma desarrollada por el Cuerpo Académico SIyCISE</p>
+    </div>
+
+    <!-- Sección de descripción -->
+    <div class="about-content">
+        <p class="mission-text">Somos un grupo de investigación dedicado al desarrollo de soluciones 
+        tecnológicas innovadoras en Sistemas Inteligentes y CiberSeguridad.</p>
+        
+        <div class="expertise-areas">
+            <div class="area-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-brain animate-icon"></i>
+                <h3>Sistemas Inteligentes</h3>
+                <div class="area-details">
+                    <p>Investigación y desarrollo en IA, Machine Learning y Sistemas Expertos</p>
+                </div>
+            </div>
+            <div class="area-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-shield-alt animate-icon"></i>
+                <h3>CiberSeguridad</h3>
+                <div class="area-details">
+                    <p>Protección de datos y sistemas contra amenazas cibernéticas</p>
+                </div>
+            </div>
+            <div class="area-card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-database animate-icon"></i>
+                <h3>Análisis de Datos</h3>
+                <div class="area-details">
+                    <p>Procesamiento y análisis avanzado de grandes volúmenes de datos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección del equipo -->
+    <section class="team-section">
+        <h2>Nuestro Equipo</h2>
+        <p class="team-description">Conoce a los miembros del Cuerpo Académico SIyCISE y al desarrollador técnico</p>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="member-image">
+                    <img src="/assets/images/team/member1.jpg" alt="Dr. Nombre del Miembro">
+                </div>
+                <div class="member-info">
+                    <h3>Dr. Nombre del Miembro</h3>
+                    <p class="role">Líder del Cuerpo Académico</p>
+                    <p class="specialty">Especialidad en Sistemas Inteligentes</p>
+                    <div class="social-links">
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                        <a href="#" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Repetir para los otros 3 miembros del cuerpo académico -->
+            <div class="team-card">
+                <div class="member-image">
+                    <img src="/assets/images/team/member2.jpg" alt="Dra. Nombre del Miembro">
+                </div>
+                <div class="member-info">
+                    <h3>Dra. Nombre del Miembro</h3>
+                    <p class="role">Investigador</p>
+                    <p class="specialty">Especialidad en CiberSeguridad</p>
+                    <div class="social-links">
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                        <a href="#" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desarrollador técnico con estilo destacado -->
+            <div class="team-card">
+                <div class="member-image">
+                    <img src="/assets/images/team/developer.jpg" alt="Nombre del Desarrollador">
+                </div>
+                <div class="member-info">
+                    <h3>Nombre del Desarrollador</h3>
+                    <p class="role">Desarrollador Técnico</p>
+                    <p class="specialty">Desarrollo Full Stack</p>
+                    <div class="social-links">
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true
+    });
+</script>
+
+{% endblock %}
