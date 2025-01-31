@@ -6,14 +6,7 @@
     --text: #333333;
     --gray: #666666;
     --spacing: 2rem;
-    --gradient: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
-    --calm-blue: #e3f3fd;
-    --soothing: #e8f5e9;
-    --bg-primario: #5B21B6;
-    --bg-secundario: #4F46E5;
 }
-
-
 
 /*blog*/
 .blog-container {

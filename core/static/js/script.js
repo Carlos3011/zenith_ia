@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -43,4 +45,3 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCount();
     });
 });
-AOS.init();

@@ -76,10 +76,15 @@ WSGI_APPLICATION = 'zenith_ia.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'zenith_db',  # Nombre de la base de datos
+        'USER': 'postgres',  # Usuario de PostgreSQL
+        'PASSWORD': 'admin',  # Reemplaza con tu contraseña
+        'HOST': 'localhost',  # Cambia si usas un servidor externo
+        'PORT': '5432',  # Puerto por defecto de PostgreSQL
     }
 }
+
 
 
 # Password validation
