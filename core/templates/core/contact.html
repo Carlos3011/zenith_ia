@@ -1,140 +1,141 @@
-{%extends 'core/base.html'%}
+{% extends 'core/base.html' %}
+{% load static %}
 
-{% block title %}Contacto - Zenith.IA {% endblock %}
+{% block title %}Contacto - Zenith.IA{% endblock %}
 
 {% block content %}
-<div class="container mx-auto px-4 py-8 max-w-3xl">
-    <div class="text-center mb-10">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3 fade-in">
-            Contacto
-        </h1>
-        <p class="text-lg text-gray-600 fade-in">
-            ¿Tienes alguna pregunta o te gustaría colaborar con nosotros? ¡Nos encantaría escucharte!
-        </p>
+<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-aos="fade-up">
+    <!-- Encabezado con efecto gradiente -->
+    <div class="text-center mb-16">
+        <div class="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-8 rounded-2xl shadow-xl">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Contacto</h1>
+            <p class="text-xl opacity-90 max-w-2xl mx-auto">
+                ¿Necesitas ayuda profesional, tienes una sugerencia o quieres colaborar? Nuestro equipo está listo para asistirte.
+            </p>
+        </div>
     </div>
 
-    <div class="bg-white rounded-lg shadow-sm p-6 md:p-7 fade-in">
-        <form id="contactForm" action="/contact/submit" method="POST" class="space-y-5">
-            <div class="group relative">
-                <input type="text" id="nombre" name="nombre" required
-                    class="peer w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors bg-white"
-                    placeholder=" ">
-                <label for="nombre"
-                    class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">
-                    Nombre completo
-                </label>
-            </div>
-
-            <div class="group relative">
-                <input type="email" id="email" name="email" required
-                    class="peer w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors bg-white"
-                    placeholder=" ">
-                <label for="email"
-                    class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">
-                    Correo electrónico
-                </label>
-            </div>
-
-            <div class="relative">
-                <select id="asunto" name="asunto"
-                    class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors bg-white appearance-none">
-                    <option value="" disabled selected>Selecciona un asunto</option>
-                    <option value="consulta">Consulta general</option>
-                    <option value="colaboracion">Propuesta de colaboración</option>
-                    <option value="soporte">Soporte técnico</option>
-                    <option value="otro">Otro</option>
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
-                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-                    </svg>
+    <!-- Contenedor del formulario -->
+    <div class="grid md:grid-cols-2 gap-12">
+        <!-- Información de contacto -->
+        <div class="space-y-6" data-aos="fade-right">
+            <div class="bg-purple-50 p-6 rounded-xl">
+                <h3 class="text-xl font-semibold text-purple-600 mb-4">Información de contacto</h3>
+                <div class="space-y-3">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-map-marker-alt text-white text-sm"></i>
+                        </div>
+                        <p class="text-gray-600">Av. Universidad 123, Ciudad de México</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-envelope text-white text-sm"></i>
+                        </div>
+                        <a href="mailto:soporte@zenithia.com" class="text-gray-600 hover:text-purple-600">soporte@zenithia.com</a>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-phone text-white text-sm"></i>
+                        </div>
+                        <a href="tel:+525551234567" class="text-gray-600 hover:text-purple-600">+52 55 5123 4567</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="group relative">
-                <textarea id="mensaje" name="mensaje" rows="5" required
-                    class="peer w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors bg-white"
-                    placeholder=" "></textarea>
-                <label for="mensaje"
-                    class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">
-                    Mensaje
-                </label>
+            <!-- Tarjeta de seguridad -->
+            <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-shield-alt text-green-600"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold">Comunicación segura</h4>
+                </div>
+                <p class="text-sm text-gray-600">
+                    Todos los mensajes son encriptados end-to-end y protegidos bajo estándares HIPAA.
+                </p>
             </div>
+        </div>
 
-            <button type="submit"
-                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg flex items-center justify-center gap-2">
-                <span>Enviar mensaje</span>
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="2" />
-                </svg>
-            </button>
-        </form>
+        <!-- Formulario -->
+        <div class="bg-white rounded-xl shadow-lg p-8" data-aos="fade-left">
+            <form id="contactForm" action="/contact/submit" method="POST" class="space-y-6">
+                <!-- Campo Nombre -->
+                <div class="relative">
+                    <input type="text" id="nombre" name="nombre" required
+                        class="peer w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-purple-500 transition-all bg-white"
+                        placeholder=" ">
+                    <label for="nombre"
+                        class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-purple-600">
+                        Nombre completo
+                    </label>
+                    <i class="fas fa-user absolute right-4 top-4 text-gray-400 peer-focus:text-purple-500"></i>
+                </div>
+
+                <!-- Campo Email -->
+                <div class="relative">
+                    <input type="email" id="email" name="email" required
+                        class="peer w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-purple-500 transition-all bg-white"
+                        placeholder=" ">
+                    <label for="email"
+                        class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-purple-600">
+                        Correo electrónico
+                    </label>
+                    <i class="fas fa-envelope absolute right-4 top-4 text-gray-400 peer-focus:text-purple-500"></i>
+                </div>
+
+                <!-- Select Asunto -->
+                <div class="relative">
+                    <select id="asunto" name="asunto"
+                        class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-purple-500 transition-colors bg-white appearance-none">
+                        <option value="" disabled selected>Selecciona un asunto</option>
+                        <option value="consulta">Consulta general</option>
+                        <option value="colaboracion">Propuesta de colaboración</option>
+                        <option value="soporte">Soporte técnico</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Campo Mensaje -->
+                <div class="relative">
+                    <textarea id="mensaje" name="mensaje" rows="5" required
+                        class="peer w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-purple-500 transition-all bg-white"
+                        placeholder=" "></textarea>
+                    <label for="mensaje"
+                        class="absolute left-4 -top-2.5 bg-white px-2 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-purple-600">
+                        Tu mensaje
+                    </label>
+                    <i class="fas fa-comment-dots absolute right-4 top-4 text-gray-400 peer-focus:text-purple-500"></i>
+                </div>
+
+                <!-- Botón de envío -->
+                <button type="submit" 
+                        class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg flex items-center justify-center gap-2 relative">
+                    <span class="group-hover:translate-x-2 transition-transform">Enviar mensaje</span>
+                    <i class="fas fa-paper-plane transition-transform group-hover:translate-x-1"></i>
+                    <!-- Spinner de carga -->
+                    <div class="absolute right-4 hidden loading-spinner">
+                        <div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    </div>
+                </button>
+            </form>
+        </div>
     </div>
-</div>
 
+    <!-- Sección de colaboradores -->
+    <div class="mt-16 text-center" data-aos="fade-up">
+        <h3 class="text-gray-500 text-sm font-medium mb-4">Colaboradores institucionales</h3>
+        <div class="flex flex-wrap justify-center items-center gap-8 opacity-75">
+            <img src="{% static 'images/logos/university-logo.png' %}" class="h-12" alt="Universidad">
+            <img src="{% static 'images/logos/hipaa-logo.png' %}" class="h-10" alt="HIPAA">
+            <img src="{% static 'images/logos/ai-consortium.png' %}" class="h-14" alt="AI Consortium">
+        </div>
+    </div>
+</section>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contactForm');
-    
-    const formElements = form.querySelectorAll('.group, button');
-    formElements.forEach((el, index) => {
-        el.classList.add('form-element');
-        el.style.transitionDelay = `${index * 0.1}s`;
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-
-    document.querySelectorAll('.form-element').forEach(el => observer.observe(el));
-
-    // Manejo del formulario
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        try {
-            const formData = new FormData(form);
-            const response = await fetch('/contact/submit', {
-                method: 'POST',
-                body: formData
-            });
-            
-            const data = await response.json();
-            
-            if(data.success) {
-                // Mostrar mensaje de éxito con Tailwind
-                const successMessage = document.createElement('div');
-                successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-500 ease-in-out';
-                successMessage.textContent = '¡Mensaje enviado con éxito!';
-                document.body.appendChild(successMessage);
-                
-                form.reset();
-                
-                // Eliminar mensaje después de 3 segundos
-                setTimeout(() => {
-                    successMessage.remove();
-                }, 3000);
-            }
-        } catch (error) {
-            // Mostrar mensaje de error con Tailwind
-            const errorMessage = document.createElement('div');
-            errorMessage.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg';
-            errorMessage.textContent = 'Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.';
-            document.body.appendChild(errorMessage);
-            
-            setTimeout(() => {
-                errorMessage.remove();
-            }, 3000);
-        }
-    });
-});
-</script>
 {% endblock %}

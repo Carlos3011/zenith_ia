@@ -1,93 +1,145 @@
-{%extends 'core/base.html'%}
+{% extends 'core/base.html' %}
+{% load static %}
 
-{% block title %}Servicio - Zenith.IA {% endblock %}
+{% block title %}Nuestro Servicio - Zenith.IA{% endblock %}
 
 {% block content %}
-<section class="servicios-section py-5" data-aos="fade-up">
-    <div class="container">
-        <!-- Sección de introducción -->
-        <div class="row mb-5 text-center">
-            <div class="col-lg-8 mx-auto" data-aos="fade-down" data-aos-delay="100">
-                <h2 class="fw-bold mb-4">Tu Compañero Digital para el Bienestar Emocional Universitario</h2>
-                <p class="lead">
-                    Somos una plataforma dedicada a apoyar la salud mental de los estudiantes universitarios, 
-                    ofreciendo herramientas preventivas y de detección temprana para la depresión, 
-                    porque tu bienestar emocional es tan importante como tu éxito académico.
-                </p>
-            </div>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Hero Section -->
+    <div class="text-center mb-16" data-aos="fade-up">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+            Tecnología Compasiva para la Salud Mental Universitaria
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Plataforma de intervención temprana que combina evaluación psicológica validada (PHQ-8) con inteligencia artificial predictiva y apoyo humano profesional
+        </p>
+        <div class="mt-8">
+            <a href="#comenzar" class="bg-purple-600 text-white px-8 py-3 rounded-full hover:bg-purple-700 transition duration-300 inline-block">
+                Realizar Test PHQ-8
+            </a>
         </div>
+    </div>
 
-        <!-- Tarjetas de servicios -->
-        <div class="row g-4">
-            <!-- Servicio 1: Detección Temprana -->
-            <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
-                <div class="card h-100 border-0 shadow-lg hover-card">
-                    <div class="card-body p-4">
-                        <div class="feature-icon d-flex align-items-center justify-content-center bg-primary bg-gradient text-white rounded-circle mb-3" style="width: 70px; height: 70px;">
-                            <i class="bi bi-shield-check fs-4"></i>
-                        </div>
-                        <h5 class="card-title text-primary">Detección Temprana</h5>
-                        <p class="card-text">Sistema inteligente de monitoreo que ayuda a identificar señales tempranas de depresión, permitiendo una intervención oportuna y efectiva.</p>
-                        <img src="/assets/images/early-detection.svg" class="img-fluid mt-3" alt="Detección Temprana">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Servicio 2: Apoyo Emocional -->
-            <div class="col-md-4" data-aos="flip-left" data-aos-delay="400">
-                <div class="card h-100 border-0 shadow-lg hover-card">
-                    <div class="card-body p-4">
-                        <div class="feature-icon d-flex align-items-center justify-content-center bg-primary bg-gradient text-white rounded-circle mb-3" style="width: 70px; height: 70px;">
-                            <i class="bi bi-heart-pulse fs-4"></i>
-                        </div>
-                        <h5 class="card-title text-primary">Apoyo Continuo</h5>
-                        <p class="card-text">Acceso 24/7 a recursos de autoayuda, ejercicios de mindfulness y conexión con profesionales de salud mental cuando lo necesites.</p>
-                        <img src="/assets/images/emotional-support.svg" class="img-fluid mt-3" alt="Apoyo Emocional">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Servicio 3: Comunidad de Apoyo -->
-            <div class="col-md-4" data-aos="flip-left" data-aos-delay="600">
-                <div class="card h-100 border-0 shadow-lg hover-card">
-                    <div class="card-body p-4">
-                        <div class="feature-icon d-flex align-items-center justify-content-center bg-primary bg-gradient text-white rounded-circle mb-3" style="width: 70px; height: 70px;">
-                            <i class="bi bi-people fs-4"></i>
-                        </div>
-                        <h5 class="card-title text-primary">Comunidad Universitaria</h5>
-                        <p class="card-text">Espacio seguro para compartir experiencias, conectar con otros estudiantes y acceder a grupos de apoyo moderados por especialistas.</p>
-                        <img src="/assets/images/community-support.svg" class="img-fluid mt-3" alt="Comunidad de Apoyo">
-                    </div>
-                </div>
-            </div>
+    <!-- Problema/Solución -->
+    <div class="grid md:grid-cols-2 gap-12 mb-20 items-center" data-aos="fade-up">
+        <div class="bg-purple-50 p-8 rounded-2xl">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">El desafío universitario</h2>
+            <p class="text-gray-600 mb-4">
+                1 de cada 3 estudiantes presenta síntomas depresivos, pero menos del 20% busca ayuda profesional. Las barreras principales:
+            </p>
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li>Estigma social</li>
+                <li>Falta de tiempo</li>
+                <li>Costos de atención</li>
+                <li>Desconocimiento de recursos</li>
+            </ul>
         </div>
-
-        <!-- Sección de estadísticas -->
-        <div class="row mt-5 pt-5 text-center" data-aos="fade-up" data-aos-delay="200">
-            <div class="col-md-4 mb-4">
-                <div class="stat-card p-4">
-                    <i class="bi bi-heart-fill display-4 text-primary mb-3"></i>
-                    <h2 class="counter">5000+</h2>
-                    <p>Estudiantes Apoyados</p>
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Nuestra solución innovadora</h2>
+            <div class="space-y-4">
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-white text-sm"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-gray-600">Detección temprana mediante test PHQ-8 validado por la OMS</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="stat-card p-4">
-                    <i class="bi bi-stars display-4 text-primary mb-3"></i>
-                    <h2 class="counter">90%</h2>
-                    <p>Efectividad en Prevención</p>
+                <!-- Repetir para otros puntos -->
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-white text-sm"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-gray-600">Chatbot terapéutico con NLP para apoyo inmediato</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="stat-card p-4">
-                    <i class="bi bi-hospital display-4 text-primary mb-3"></i>
-                    <h2 class="counter">50+</h2>
-                    <p>Especialistas Disponibles</p>
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-white text-sm"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-gray-600">Conexión automatizada con psicólogos certificados</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Proceso Científico -->
+    <div class="mb-20" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-center mb-12">Metodología Basada en Evidencia</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="text-purple-600 text-5xl font-bold mb-4">1</div>
+                <h3 class="text-xl font-semibold mb-3">Evaluación PHQ-8</h3>
+                <p class="text-gray-600">Test estandarizado que evalúa 8 criterios diagnósticos de depresión según el DSM-5</p>
+                <div class="mt-4 bg-purple-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Sensibilidad del 88% y especificidad del 93% para detección de depresión moderada-severa</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="text-purple-600 text-5xl font-bold mb-4">2</div>
+                <h3 class="text-xl font-semibold mb-3">Análisis Predictivo</h3>
+                <p class="text-gray-600">Modelo de machine learning entrenado con más de 10,000 casos clínicos</p>
+                <div class="mt-4 bg-purple-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Precisión del 92.4% en identificación de patrones de riesgo</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="text-purple-600 text-5xl font-bold mb-4">3</div>
+                <h3 class="text-xl font-semibold mb-3">Intervención</h3>
+                <p class="text-gray-600">Protocolos personalizados según nivel de riesgo detectado</p>
+                <div class="mt-4 bg-purple-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Red de 50+ psicólogos universitarios certificados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonios -->
+    <div class="bg-purple-50 rounded-2xl p-8 md:p-12 mb-16" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-center mb-8">Impacto Real</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="flex items-center mb-4">
+                    <img src="{% static 'images/testimonials/student1.jpg' %}" class="w-12 h-12 rounded-full mr-4" alt="Estudiante">
+                    <div>
+                        <h4 class="font-semibold">Ana, 22 años</h4>
+                        <p class="text-gray-600 text-sm">Estudiante de Ingeniería</p>
+                    </div>
+                </div>
+                <p class="text-gray-600">"El chatbot me ayudó a entender que no estaba sola. Cuando mi evaluación salió alta, me conectaron con una psicóloga en menos de 24 horas"</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="flex items-center mb-4">
+                    <img src="{% static 'images/testimonials/psychologist1.jpg' %}" class="w-12 h-12 rounded-full mr-4" alt="Psicólogo">
+                    <div>
+                        <h4 class="font-semibold">Dra. Martínez</h4>
+                        <p class="text-gray-600 text-sm">Psicóloga Clínica</p>
+                    </div>
+                </div>
+                <p class="text-gray-600">"La precisión de las evaluaciones nos permite priorizar casos críticos y optimizar nuestros recursos"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Final -->
+    <div class="text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Tu salud mental importa</h2>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            Realiza tu evaluación confidencial en solo 5 minutos y accede a recursos personalizados
+        </p>
+        <a href="#comenzar" class="bg-purple-600 text-white px-8 py-3 rounded-full hover:bg-purple-700 transition duration-300 inline-block">
+            Comenzar Ahora
+        </a>
+        <p class="text-sm text-gray-500 mt-4">Totalmente confidencial • Certificado HIPAA • Sin costo inicial</p>
+    </div>
 </section>
-
-
 {% endblock %}

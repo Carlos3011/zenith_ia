@@ -1,113 +1,152 @@
-{%extends 'core/base.html'%}
+{% extends 'core/base.html' %}
+{% load static %}
 
-{% block title %}Acerca de - Zenith.IA {% endblock %}
+{% block title %}Acerca de - Zenith.IA{% endblock %}
 
 {% block content %}
-<div class="about-container">
-    <!-- Sección de encabezado con logo -->
-    <div class="about-header">
-        <div class="logo-container">
-            <img src="/assets/images/siycise-logo.png" alt="Logo SIyCISE" class="main-logo">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Sección de encabezado -->
+    <div class="text-center mb-16" data-aos="fade-up">
+        <div class="mb-8">
+            <img src="{% static 'img/log_ca_f.png' %}" alt="Logo SIyCISE" class="mx-auto h-24 w-auto">
         </div>
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Acerca de nosotros</h1>
-        <p class="header-description">Plataforma desarrollada por el Cuerpo Académico SIyCISE</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            Innovación en Salud Mental Digital
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Plataforma desarrollada por el Cuerpo Académico SIyCISE en colaboración con expertos en psicología clínica
+        </p>
     </div>
 
     <!-- Sección de descripción -->
-    <div class="about-content">
-        <p class="mission-text">Somos un grupo de investigación dedicado al desarrollo de soluciones 
-        tecnológicas innovadoras en Sistemas Inteligentes y CiberSeguridad.</p>
-        
-        <div class="expertise-areas">
-            <div class="area-card" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-brain animate-icon"></i>
-                <h3>Sistemas Inteligentes</h3>
-                <div class="area-details">
-                    <p>Investigación y desarrollo en IA, Machine Learning y Sistemas Expertos</p>
+    <div class="mb-20" data-aos="fade-up">
+        <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Nuestra Misión</h2>
+            <p class="text-lg text-gray-600 leading-relaxed mb-8">
+                Combinamos experiencia en sistemas inteligentes y ciberseguridad para crear soluciones tecnológicas que transforman la atención en salud mental. Nuestra plataforma integra investigación académica rigurosa con aplicaciones prácticas basadas en IA.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-8 mt-10">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-microscope text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Investigación Multidisciplinaria</h3>
+                    <p class="text-gray-600">Colaboración entre ingenieros, data scientists y psicólogos clínicos</p>
                 </div>
-            </div>
-            <div class="area-card" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-shield-alt animate-icon"></i>
-                <h3>CiberSeguridad</h3>
-                <div class="area-details">
-                    <p>Protección de datos y sistemas contra amenazas cibernéticas</p>
+                
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Seguridad Garantizada</h3>
+                    <p class="text-gray-600">Infraestructura con certificación HIPAA para datos médicos</p>
                 </div>
-            </div>
-            <div class="area-card" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-database animate-icon"></i>
-                <h3>Análisis de Datos</h3>
-                <div class="area-details">
-                    <p>Procesamiento y análisis avanzado de grandes volúmenes de datos</p>
+                
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-rocket text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Innovación Continua</h3>
+                    <p class="text-gray-600">Actualizaciones mensuales basadas en últimos avances en IA</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Sección del equipo -->
-    <section class="team-section">
-        <h2>Nuestro Equipo</h2>
-        <p class="team-description">Conoce a los miembros del Cuerpo Académico SIyCISE y al desarrollador técnico</p>
-        <div class="team-grid">
-            <div class="team-card">
-                <div class="member-image">
-                    <img src="/assets/images/team/member1.jpg" alt="Dr. Nombre del Miembro">
-                </div>
-                <div class="member-info">
-                    <h3>Dr. Nombre del Miembro</h3>
-                    <p class="role">Líder del Cuerpo Académico</p>
-                    <p class="specialty">Especialidad en Sistemas Inteligentes</p>
-                    <div class="social-links">
-                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
-                        <a href="#" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+    <section class="mb-16">
+        <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Nuestro Equipo</h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Miembros académicos -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                <img src="{% static 'images/team/member1.jpg' %}" alt="Dr. Nombre" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Dr. Nombre del Miembro</h3>
+                    <p class="text-purple-600 font-medium mb-2">Líder de Investigación</p>
+                    <p class="text-gray-600 text-sm mb-4">PhD en Sistemas Inteligentes</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-purple-600 hover:text-purple-800">
+                            <i class="fab fa-linkedin text-lg"></i>
+                        </a>
+                        <a href="#" class="text-purple-600 hover:text-purple-800">
+                            <i class="fas fa-graduation-cap text-lg"></i>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Repetir para los otros 3 miembros del cuerpo académico -->
-            <div class="team-card">
-                <div class="member-image">
-                    <img src="/assets/images/team/member2.jpg" alt="Dra. Nombre del Miembro">
-                </div>
-                <div class="member-info">
-                    <h3>Dra. Nombre del Miembro</h3>
-                    <p class="role">Investigador</p>
-                    <p class="specialty">Especialidad en CiberSeguridad</p>
-                    <div class="social-links">
-                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
-                        <a href="#" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <!-- Repetir para otros miembros académicos -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="150">
+                <img src="{% static 'images/team/member2.jpg' %}" alt="Dra. Nombre" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Dra. Nombre del Miembro</h3>
+                    <p class="text-purple-600 font-medium mb-2">Especialista en Ciberseguridad</p>
+                    <p class="text-gray-600 text-sm mb-4">PhD en Ciencias Computacionales</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-purple-600 hover:text-purple-800">
+                            <i class="fab fa-researchgate text-lg"></i>
+                        </a>
+                        <a href="#" class="text-purple-600 hover:text-purple-800">
+                            <i class="fab fa-github text-lg"></i>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Desarrollador técnico con estilo destacado -->
-            <div class="team-card">
-                <div class="member-image">
-                    <img src="/assets/images/team/developer.jpg" alt="Nombre del Desarrollador">
+            <!-- Desarrollador destacado -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-purple-600" data-aos="fade-up" data-aos-delay="200">
+                <img src="{% static 'images/team/developer.jpg' %}" alt="Desarrollador" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Nombre Desarrollador</h3>
+                    <p class="text-purple-600 font-medium mb-2">Ingeniero de Software</p>
+                    <p class="text-gray-600 text-sm mb-4">Especialista en IA Aplicada</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-purple-600 hover:text-purple-800">
+                            <i class="fab fa-linkedin text-lg"></i>
+                        </a>
+                        <a href="#" class="text-purple-600 hover:text-purple-800">
+                            <i class="fab fa-github text-lg"></i>
+                        </a>
+                        <a href="#" class="text-purple-600 hover:text-purple-800">
+                            <i class="fas fa-globe text-lg"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="member-info">
-                    <h3>Nombre del Desarrollador</h3>
-                    <p class="role">Desarrollador Técnico</p>
-                    <p class="specialty">Desarrollo Full Stack</p>
-                    <div class="social-links">
-                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+            </div>
+
+            <!-- Último miembro -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="250">
+                <img src="{% static 'images/team/member3.jpg' %}" alt="Dr. Nombre" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Dr. Nombre del Miembro</h3>
+                    <p class="text-purple-600 font-medium mb-2">Psicología Clínica</p>
+                    <p class="text-gray-600 text-sm mb-4">Experto en Diagnóstico Digital</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-purple-600 hover:text-purple-800">
+                            <i class="fas fa-file-alt text-lg"></i>
+                        </a>
+                        <a href="#" class="text-purple-600 hover:text-purple-800">
+                            <i class="fab fa-researchgate text-lg"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Sección de colaboradores -->
+    <div class="bg-purple-50 rounded-2xl p-8 md:p-12 mt-16" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-center mb-8">Colaboradores Académicos</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+            <img src="{% static 'images/logos/universidad-logo.png' %}" alt="Universidad" class="h-12 mx-auto opacity-75 hover:opacity-100 transition-opacity">
+            <img src="{% static 'images/logos/hipaa-logo.png' %}" alt="HIPAA" class="h-16 mx-auto opacity-75 hover:opacity-100 transition-opacity">
+            <img src="{% static 'images/logos/research-logo.png' %}" alt="Research" class="h-20 mx-auto opacity-75 hover:opacity-100 transition-opacity">
+            <img src="{% static 'images/logos/ai-logo.png' %}" alt="AI Consortium" class="h-14 mx-auto opacity-75 hover:opacity-100 transition-opacity">
+        </div>
+    </div>
 </div>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script>
-    AOS.init({
-        duration: 1000,
-        once: true
-    });
-</script>
 
 {% endblock %}
