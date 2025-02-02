@@ -1,0 +1,14 @@
+{% extends 'core/base/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6">Dashboard de usuarios</h1>
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="bg-red-500 text-white font-bold py-2 px-4 rounded">
+            Cerrar sesión
+        </button>
+    </form>
+</div>
+{% endblock %}
