@@ -8,7 +8,7 @@ from .models import Usuario
 
 @api_view(['POST'])
 def register_view(request):
-    form = RegistroForm(request.POST)  # Cambiado request.data → request.POST
+    form = RegistroForm(request.POST)
     if form.is_valid():
         user = form.save()
         refresh = RefreshToken.for_user(user)

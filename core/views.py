@@ -19,6 +19,15 @@ def blog(request):
 def contact(request):
     return render(request, 'core/contact.html')
 
+def dashboard_usuario(request):
+    # Lógica para mostrar el dashboard del usuario
+    return render(request, 'core/users/dashboard.html')
+
+def dashboard_psicologo(request):
+    # Lógica para mostrar el dashboard del psicólogo
+    return render(request, 'core/psychologists/dashboard.html')  # Asegúrate que la ruta sea correcta
+
+
 # Vista de login
 def login_view(request):
     # Si el usuario ya está autenticado, redirige a su dashboard
@@ -59,11 +68,4 @@ def register(request):
     
     return render(request, 'core/auth/register.html', {'form': form})
 
-def dashboard_usuario(request):
-    # Lógica para mostrar el dashboard del usuario
-    return render(request, 'core/users/dashboard.html')
-
-def dashboard_psicologo(request):
-    # Lógica para mostrar el dashboard del psicólogo
-    return render(request, 'core/psychologists/dashboard.html')  # Asegúrate que la ruta sea correcta
 
