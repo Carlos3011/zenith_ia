@@ -1,31 +1,32 @@
 from django.urls import path
-from .api_views import register_view, login_view  
+from rest_framework_simplejwt.views import TokenRefreshView
 from django.contrib.auth import views as auth_views
-from .views import home, about, services, blog, contact, login_view as web_login, register
-from . import views
+from .api_views import register_view, login_view  
+from .views import (
+    home, about, services, blog, contact, 
+    login_view as web_login, register, logout_view,
+    dashboard_usuario, dashboard_psicologo
+)
 
 urlpatterns = [
-    # Páginas sin estar registrados
+    #Páginas públicas
     path('', home, name='home'),
     path('about/', about, name='about'),
     path('services/', services, name='services'),
     path('blog/', blog, name='blog'),
     path('contact/', contact, name='contact'),
     
-    # Vistas de autenticación web
+    #Autenticación web
     path('login/', web_login, name='login'),
     path('register/', register, name='register'),
-    
-    # Cierre de sesion con redirección a home
-    path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
+    path('logout/', logout_view, name='logout'),  #Ahora usamos nuestra propia vista de logout
 
-    # Vistas usuarios
-    path('usuario/dashboard/', views.dashboard_usuario, name='dashboard_usuario'),  # Dashboard de usuario
-
-    # Vistas psicolgos
-    path('psicologo/dashboard/', views.dashboard_psicologo, name='dashboard_psicologo'),  # Dashboard de psicólogo
+    #Vistas privadas (Solo autenticados)
+    path('usuario/dashboard/', dashboard_usuario, name='dashboard_usuario'),
+    path('psicologo/dashboard/', dashboard_psicologo, name='dashboard_psicologo'),
     
-    # Rutas API para autenticación con JWT
+    #API para autenticación con JWT
     path('api/register/', register_view, name='api_register'),
     path('api/login/', login_view, name='api_login'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
