@@ -3,6 +3,7 @@ from django.contrib.auth import login as auth_login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import RegistroForm
+from .models import Cita, Recomendacion, Test, EvaluacionIA
 
 #Vistas públicas
 def home(request):
@@ -24,6 +25,33 @@ def contact(request):
 @login_required
 def dashboard_usuario(request):
     return render(request, 'core/users/dashboard.html', {'usuario': request.user})
+
+@login_required
+def recursos(request):
+    return render(request, 'core/users/resources.html')
+
+# Vista del chatbot (solo autenticados)
+@login_required
+def chatbot(request):
+    return render(request, 'core/users/chatbot.html')
+
+# Vista de mis citas (solo autenticados)
+@login_required
+def mis_citas(request):
+    citas = Cita.objects.filter(paciente=request.user)
+    return render(request, 'core/users/appointment.html', {'citas': citas})
+
+# Vista de evaluaciones (solo autenticados)
+@login_required
+def evaluaciones(request):
+    evaluaciones = EvaluacionIA.objects.filter(usuario=request.user)
+    return render(request, 'core/users/evaluations.html', {'evaluaciones': evaluaciones})
+
+# Vista de recomendaciones (solo autenticados)
+@login_required
+def recomendaciones(request):
+    recomendaciones = Recomendacion.objects.filter(usuario=request.user)
+    return render(request, 'core/users/recomendations.html', {'recomendaciones': recomendaciones})
 
 #Vista de dashboard del psicólogo (Solo autenticados)
 @login_required
