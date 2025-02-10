@@ -9,6 +9,8 @@ SECRET_KEY = 'django-insecure-zy39u&j*z39dami-q387w1cn9c4msuz0xz60y1+gzdy1i#33ot
 DEBUG = True  #Cambia a False en producción
 ALLOWED_HOSTS = ['*']  #Cambiar en producción
 
+DEEPSEEK_API_KEY = "sk-696b06afb4b64af68d12e57cdf9962e5"
+
 #Aplicaciones instaladas
 INSTALLED_APPS = [
     'django.contrib.admin',

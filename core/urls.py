@@ -3,7 +3,7 @@ from rest_framework_simplejwt.views import TokenRefreshView
 from django.contrib.auth import views as auth_views
 from .api_views import register_view, login_view  
 from .views import (
-    home, about, services, blog, contact, 
+    home, about, services, blog, chatbotPublic, contact, 
     login_view as web_login, register, logout_view,
     dashboard_usuario, dashboard_psicologo,
     recursos, chatbot, mis_citas, evaluaciones, recomendaciones
@@ -14,7 +14,9 @@ urlpatterns = [
     path('', home, name='home'),
     path('about/', about, name='about'),
     path('services/', services, name='services'),
+    path('chatbot-public/', chatbotPublic, name='chatbot-public'),
     path('blog/', blog, name='blog'),
+    
     path('contact/', contact, name='contact'),
     
     # Autenticación web

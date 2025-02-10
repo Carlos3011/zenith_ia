@@ -2,5 +2,31 @@
 {% load static %}
 
 {% block content %}
+<div class="container mt-4">
+    <h2>Chatbot Personal</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <textarea class="form-control" name="prompt" rows="3" 
+                      placeholder="¿En qué puedo ayudarte hoy?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
 
+    {% if response %}
+    <div class="mt-4 p-3 bg-light rounded">
+        <h5>Respuesta:</h5>
+        <div class="response-content">
+            {{ response|linebreaks }}
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if error %}
+    <div class="alert alert-danger mt-3">
+        {{ error }}
+    </div>
+    {% endif %}
+</div>
 {% endblock %}

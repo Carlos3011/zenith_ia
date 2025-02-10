@@ -1,0 +1,96 @@
+{% extends 'core/base/base.html'%}
+{% load static %}
+{% block title %}Chatbot - Zenith.IA {% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 py-8">
+    <div class="bg-white rounded-lg shadow-lg p-6">
+        <div class="flex items-center mb-6">
+            <img src="{% static 'bot-icon.png' %}" class="w-12 h-12 rounded-full mr-3" alt="Bot">
+            <h1 class="text-2xl font-bold text-gray-800">Asistente de Salud Mental</h1>
+        </div>
+        
+        <div id="chat-container" class="h-96 overflow-y-auto mb-4 space-y-4">
+            <!-- Mensajes del chat -->
+        </div>
+        
+        <div class="flex gap-2">
+            <input type="text" id="user-input" 
+                   class="flex-1 p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                   placeholder="Escribe tu mensaje...">
+            <button id="send-btn" 
+                    class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                Enviar
+            </button>
+        </div>
+        
+        <div class="mt-4 text-sm text-gray-500">
+            Escribe "iniciar evaluación" para comenzar el test PHQ-8
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const chatContainer = document.getElementById('chat-container');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    
+    function addMessage(text, isBot = false) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `flex ${isBot ? 'justify-start' : 'justify-end'}`;
+        
+        messageDiv.innerHTML = `
+            <div class="max-w-[80%] p-3 rounded-lg ${isBot ? 
+                'bg-gray-100 text-gray-800' : 
+                'bg-blue-600 text-white'}">
+                ${text}
+            </div>
+        `;
+        
+        chatContainer.appendChild(messageDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+    
+    async function sendMessage() {
+        const message = userInput.value.trim();
+        if (!message) return;
+        
+        // Agregar mensaje del usuario
+        addMessage(message);
+        userInput.value = '';
+        
+        try {
+            const response = await fetch(window.location.href, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: new URLSearchParams({message})
+            });
+            
+            const data = await response.json();
+            
+            if (data.type === 'question') {
+                addMessage(data.text, true);
+            } 
+            else if (data.type === 'result') {
+                addMessage(`🔍 **Resultados:** ${data.text}`, true);
+                addMessage(`📌 **Recomendación:** ${data.recommendation}`, true);
+            }
+            else {
+                addMessage(data.text, true);
+            }
+        } catch (error) {
+            addMessage('Error de conexión con el servidor', true);
+        }
+    }
+    
+    sendBtn.addEventListener('click', sendMessage);
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
+});
+</script>
+{% endblock %}

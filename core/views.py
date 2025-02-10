@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import RegistroForm
 from .models import Cita, Recomendacion, Test, EvaluacionIA
+from .services.deepseek_service import MentalHealthChatbot
 
 #Vistas públicas
 def home(request):
@@ -11,6 +12,43 @@ def home(request):
 
 def about(request):
     return render(request, 'core/about.html')
+
+def chatbotPublic(request):
+    if request.method == 'POST':
+        user_message = request.POST.get('message', '').strip().lower()
+        session = request.session
+        
+        # Iniciar evaluación PHQ-8
+        if user_message == 'iniciar evaluación':
+            session['phq8_active'] = True
+            session['current_question'] = 0
+            session['phq8_answers'] = []
+            session.save()
+            first_question = MentalHealthChatbot.get_phq8_question(session)
+            return JsonResponse({'type': 'question', 'text': first_question})
+        
+        # Manejar evaluación en progreso
+        if session.get('phq8_active'):
+            response = MentalHealthChatbot.process_answer(session, user_message)
+            session.save()
+            
+            if response['type'] == 'question':
+                return JsonResponse(response)
+            
+            # Finalizar evaluación
+            del session['phq8_active']
+            return JsonResponse({
+                'type': 'result',
+                'text': f"Puntuación: {response['score']}/24 - {response['diagnosis']}",
+                'recommendation': response['recommendation'],
+                'style': response['style']
+            })
+        
+        # Chat normal
+        bot_response = MentalHealthChatbot.get_chat_response(user_message)
+        return JsonResponse({'type': 'message', 'text': bot_response})
+    
+    return render(request, 'core/chatbot-public.html')
 
 def services(request):
     return render(request, 'core/services.html')
@@ -33,8 +71,41 @@ def recursos(request):
 # Vista del chatbot (solo autenticados)
 @login_required
 def chatbot(request):
-    return render(request, 'core/users/chatbot.html')
-
+    if request.method == 'POST':
+        user_message = request.POST.get('message', '').strip().lower()
+        session = request.session
+        
+        # Iniciar evaluación PHQ-8
+        if user_message == 'iniciar evaluación':
+            session['phq8_active'] = True
+            session['current_question'] = 0
+            session['phq8_answers'] = []
+            session.save()
+            first_question = MentalHealthChatbot.get_phq8_question(session)
+            return JsonResponse({'type': 'question', 'text': first_question})
+        
+        # Manejar evaluación en progreso
+        if session.get('phq8_active'):
+            response = MentalHealthChatbot.process_answer(session, user_message)
+            session.save()
+            
+            if response['type'] == 'question':
+                return JsonResponse(response)
+            
+            # Finalizar evaluación
+            del session['phq8_active']
+            return JsonResponse({
+                'type': 'result',
+                'text': f"Puntuación: {response['score']}/24 - {response['diagnosis']}",
+                'recommendation': response['recommendation'],
+                'style': response['style']
+            })
+        
+        # Chat normal
+        bot_response = MentalHealthChatbot.get_chat_response(user_message)
+        return JsonResponse({'type': 'message', 'text': bot_response})
+    
+    return render(request, 'core/users/chatbot.html', context)
 # Vista de mis citas (solo autenticados)
 @login_required
 def mis_citas(request):
